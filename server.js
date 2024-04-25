@@ -104,9 +104,24 @@ app.delete('/tasks/:id', (req, res) => {
     }
 });
 
-// List all tasks
+// List all tasks with optional filtering and sorting
 app.get('/tasks', (req, res) => {
-    const tasks = readTasks();
+    const { status, sort } = req.query;
+
+    let tasks = readTasks();
+
+    // Filter tasks based on status
+    if (status) {
+        tasks = tasks.filter((task) => task.status === status);
+    }
+
+    // Sort tasks
+    if (sort === 'asc') {
+        tasks.sort((a, b) => a.id - b.id);
+    } else if (sort === 'desc') {
+        tasks.sort((a, b) => b.id - a.id);
+    }
+
     res.json(tasks);
 });
 
