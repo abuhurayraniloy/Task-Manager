@@ -93,16 +93,33 @@ app.put('/tasks/:id', (req, res) => {
     }
 });
 
-// Delete a task by ID
-app.delete('/tasks/:id', (req, res) => {
+// Mark a task as In Progress by ID
+app.put('/tasks/:id/inprogress', (req, res) => {
     const taskId = parseInt(req.params.id);
 
     const tasks = readTasks();
-    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
 
-    if (updatedTasks.length !== tasks.length) {
-        writeTasks(updatedTasks);
-        res.json({ message: 'Task deleted successfully' });
+    if (taskIndex !== -1) {
+        tasks[taskIndex].status = 'In Progress';
+        writeTasks(tasks);
+        res.json(tasks[taskIndex]);
+    } else {
+        res.status(404).json({ message: 'Task not found' });
+    }
+});
+
+// Mark a task as Completed by ID
+app.put('/tasks/:id/complete', (req, res) => {
+    const taskId = parseInt(req.params.id);
+
+    const tasks = readTasks();
+    const taskIndex = tasks.findIndex((task) => task.id === taskId);
+
+    if (taskIndex !== -1) {
+        tasks[taskIndex].status = 'Completed';
+        writeTasks(tasks);
+        res.json(tasks[taskIndex]);
     } else {
         res.status(404).json({ message: 'Task not found' });
     }
