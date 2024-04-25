@@ -9,18 +9,31 @@ app.use(bodyParser.json());
 
 // Read tasks from JSON file
 const readTasks = () => {
-    const tasksData = fs.readFileSync('todo.json', 'utf8');
-    return JSON.parse(tasksData);
+    try {
+        const tasksData = fs.readFileSync('todo.json', 'utf8');
+        return JSON.parse(tasksData);
+    } catch (err) {
+        console.error('Error reading tasks:', err);
+        return [];
+    }
 };
 
 // Write tasks to JSON file
 const writeTasks = (tasks) => {
-    fs.writeFileSync('todo.json', JSON.stringify(tasks, null, 2));
+    try {
+        fs.writeFileSync('todo.json', JSON.stringify(tasks, null, 2));
+    } catch (err) {
+        console.error('Error writing tasks:', err);
+    }
 };
 
 // Create a new task
 app.post('/tasks', (req, res) => {
     const { title, description } = req.body;
+
+    if (!title || !description) {
+        return res.status(400).json({ message: 'Title and description are required' });
+    }
 
     const tasks = readTasks();
     const newTask = {
