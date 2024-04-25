@@ -68,9 +68,13 @@ app.put('/tasks/:id', (req, res) => {
     const taskId = parseInt(req.params.id);
     const { title, description, status } = req.body;
 
+    if (!title && !description && !status) {
+        return res.status(400).json({ message: 'At least one field (title, description, status) is required for update' });
+    }
+
     const validStatus = ['Pending', 'In Progress', 'Completed'];
 
-    if (!validStatus.includes(status)) {
+    if (status && !validStatus.includes(status)) {
         return res.status(400).json({ message: 'Invalid status' });
     }
 
