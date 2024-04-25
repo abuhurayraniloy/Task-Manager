@@ -1,80 +1,38 @@
 [
   {
     "id": 1,
-    "title": "Task 1",
-    "description": "Description for Task 1",
-    "status": "Pending"
+    "title": "Drink Water",
+    "description": "Drink at least two glasses of water",
+    "status": "Completed"
   },
   {
     "id": 2,
-    "title": "Task 2",
-    "description": "Description for Task 2",
+    "title": "Pray",
+    "description": "Do your prayer",
     "status": "Completed"
   },
   {
     "id": 3,
-    "title": "Task 3",
-    "description": "Description for Task 3",
-    "status": "Pending"
+    "title": "Meditate",
+    "description": "Meditate for 15 minitues",
+    "status": "In Progress"
   },
   {
     "id": 4,
-    "title": "Task 4",
-    "description": "Description for Task 4",
-    "status": "Pending"
+    "title": "Attend Online Class",
+    "description": "Take Notes",
+    "status": "In Progress"
   },
   {
     "id": 5,
-    "title": "Task 6",
-    "description": "Description for Task 6",
+    "title": "Web Tech Assingnment",
+    "description": "Task Manager with NodeJS",
     "status": "Pending"
   },
   {
     "id": 6,
-    "title": "Task 9",
-    "description": "Description for Task 9",
+    "title": "Web Tech Assingnment 2",
+    "description": "Task Manager with NodeJS and mySQL",
     "status": "Pending"
-  },
-  {
-    "id": 7,
-    "title": "Task 9",
-    "description": "Description for Task 9",
-    "status": "Pending"
-  },
-  {
-    "id": 8,
-    "title": "Task 9",
-    "description": "Description for Task 9",
-    "status": "Pending"
-  },
-  {
-    "id": 9,
-    "title": "Task 9",
-    "description": "Description for Task 9",
-    "status": "Pending"
-  },
-  {
-    "id": 10,
-    "title": "Task 9",
-    "description": "Description for Task 9",
-    "status": "Pending"
-  },
-  {
-    "id": 11,
-    "title": "Task 9",
-    "description": "Description for Task 9",
-    "status": "Pending"
-  },
-  {
-    "id": 12,
-    "title": "Task 12",
-    "description": "Description for Task 9",
-    "status": "Pending"
-  },
-  {
-    "id": 13,
-    "title": "Task 20",
-    "description": "Description for Task 20",
-    "status": "In Progress"
   }
 ]
