@@ -125,6 +125,22 @@ app.put('/tasks/:id/complete', (req, res) => {
     }
 });
 
+// Search tasks by title or description
+app.get('/tasks/search', (req, res) => {
+    const { q } = req.query;
+
+    if (!q) {
+        return res.status(400).json({ message: 'Search query is required' });
+    }
+
+    const tasks = readTasks();
+    const searchResults = tasks.filter(
+        (task) => task.title.includes(q) || task.description.includes(q)
+    );
+
+    res.json(searchResults);
+});
+
 // List all tasks with optional filtering and sorting
 app.get('/tasks', (req, res) => {
     const { status, sort } = req.query;
